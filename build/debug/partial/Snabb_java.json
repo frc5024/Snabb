@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Snabb (in project Snabb)",
+    "file": "/home/ewpratten/frc/Snabb/build/libs/Snabb.jar",
+    "extensions": [],
+    "librarydir": "/home/ewpratten/frc/Snabb/build/tmp/jniExtractDir",
+    "mainclass": "frc.robot.Main"
+  }
+]
