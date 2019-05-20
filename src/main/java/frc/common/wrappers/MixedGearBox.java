@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.SpeedController;
  * A GearBox is a wrapper for any pair of WPI_TalonSRX motor controllers where the first controller has an encoder attached.
  */
 public class MixedGearBox extends GearBox{
-    public WPI_TalonSRX front;
-    public WPI_VictorSPX rear;
+    public WPI_VictorSPX front;
+    public WPI_TalonSRX rear;
 
     public SpeedControllerGroup speedcontroller;
 
@@ -22,7 +22,7 @@ public class MixedGearBox extends GearBox{
      * @param front The front or master talon in the gearbox
      * @param rear The rear or slave talon in the gearbox
      */
-    public MixedGearBox(WPI_TalonSRX front, WPI_VictorSPX rear) {
+    public MixedGearBox(WPI_VictorSPX front, WPI_TalonSRX rear) {
         /* Store both Talons */
         this.front = front;
         this.rear = rear;
@@ -45,14 +45,14 @@ public class MixedGearBox extends GearBox{
      */
     public void limitCurrent(int peakCurrent, int holdCurrent, int peakDuration){
         int timeout = 0;
-        this.front.configPeakCurrentLimit(peakCurrent, timeout);
-        this.front.configPeakCurrentDuration(peakDuration, timeout);
-        this.front.configContinuousCurrentLimit(holdCurrent, timeout);
+        // this.front.configPeakCurrentLimit(peakCurrent, timeout);
+        // this.front.configPeakCurrentDuration(peakDuration, timeout);
+        // this.front.configContinuousCurrentLimit(holdCurrent, timeout);
 
         // My opinion on victors has changed after seeing that they can not current limit
-        // this.rear.configPeakCurrentLimit(peakCurrent, timeout);
-        // this.rear.configPeakCurrentDuration(peakDuration, timeout);
-        // this.rear.configContinuousCurrentLimit(holdCurrent, timeout);
+        this.rear.configPeakCurrentLimit(peakCurrent, timeout);
+        this.rear.configPeakCurrentDuration(peakDuration, timeout);
+        this.rear.configContinuousCurrentLimit(holdCurrent, timeout);
     }
 
     /**

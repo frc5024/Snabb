@@ -42,8 +42,8 @@ public class DriveTrain extends Subsystem {
     public DriveTrain(){
         /* Create both gearbox objects */
         logger.log("[DriveTrain] Constructing GearBoxes out of motor pairs", Level.kRobot);
-        mLeftGearbox = new MixedGearBox(new WPI_TalonSRX(Constants.DriveTrain.leftFrontMotor), new WPI_VictorSPX(Constants.DriveTrain.leftRearMotor));
-        mRightGearbox = new MixedGearBox(new WPI_TalonSRX(Constants.DriveTrain.rightFrontMotor), new WPI_VictorSPX(Constants.DriveTrain.rightRearMotor));
+        mLeftGearbox = new MixedGearBox(new WPI_VictorSPX(Constants.DriveTrain.leftFrontMotor), new WPI_TalonSRX(Constants.DriveTrain.leftRearMotor));
+        mRightGearbox = new MixedGearBox(new WPI_VictorSPX(Constants.DriveTrain.rightFrontMotor), new WPI_TalonSRX(Constants.DriveTrain.rightRearMotor));
 
         /* Enable current limiting on each gearbox */
         logger.log("[DriveTrain] Limiting current on both gearboxes. Peak: " + Constants.DriveTrain.peakCurrent + "A, Hold: "
@@ -70,7 +70,7 @@ public class DriveTrain extends Subsystem {
     /**
      * Called by WPIlib's Scheduler during initalization
      */
-    public void initDefaultCommand() {
+    public void initDefault>Command() {
         // setDefaultCommand(new TriggerDrive());
     }
 
